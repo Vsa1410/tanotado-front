@@ -5,12 +5,14 @@ import 'draft-js/dist/Draft.css';
 import MyEditor from "./note";
 import EditorComponent from "./note";
 import NoteText from "./note";
+import RichEditorExample from "./note/richEditor";
 
 function NewNote(){
     return(
         <Container>
             <h2>New Note</h2>
             <NoteText/>
+            <RichEditorExample/>
         </Container>
 
     )

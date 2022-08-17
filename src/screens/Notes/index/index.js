@@ -83,6 +83,7 @@ function NotesScreen (){
                         date={dayjs(note.date).format('DD/MM/YYYY')}
                         title={note.title}
                         body={note.body}
+                        id={note._id}
                         />
                         ))} 
                     </Grid>    

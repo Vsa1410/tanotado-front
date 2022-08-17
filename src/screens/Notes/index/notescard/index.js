@@ -1,8 +1,18 @@
 import React, { Fragment } from "react";
 import dayjs from 'dayjs'
 import {Grid, Button, CardContent, Typography, Card, CardActions} from '@mui/material'
+import {useState} from 'react'
+import axios from "axios";
+import baseURL from "../../../../services/api";
+import {Navigate} from 'react-dom'
+
+
 
 function NotesCard(props){
+    
+
+    
+
     return(
            <Fragment>
 
@@ -23,7 +33,7 @@ function NotesCard(props){
                                 
                             </CardContent>
                             <CardActions className="date">
-                                <Button size="small">Learn More</Button>
+                                <Button size="small" >See more</Button>
                                 <Typography variant="caption text">
                                     {props.date}
                                                         

@@ -70,7 +70,7 @@ function NoteText(){
                 />
                 <Button variant="contained" type='submit'>Send</Button>
             </form>
-
+            
 
        </Container> 
     )
