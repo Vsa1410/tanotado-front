@@ -1,0 +1,33 @@
+
+.background{
+    background-color: #00AFB9;
+    width: 100%;
+    color: white;
+}
+.space{
+    height: 10%;
+    
+}
+.space2{
+    margin:0 0 0 10%;
+    padding: 20px 0 20% 0;
+}
+.presentation-img{
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+}
+img{
+    max-width: 400px;
+    margin: 10% 0 0 5%
+}
+.text{
+    min-width: 300px;
+    margin: 10% 0 0 5%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.textGrid{
+    min-width: 300px;
+    
+}
