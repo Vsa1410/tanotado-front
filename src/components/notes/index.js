@@ -9,7 +9,6 @@ import baseURL from '../../services/api';
 import ListNotes from './list';
 import dayjs from 'dayjs';
 import Editor from '../../screens/Notes/editor';
-import { Button } from 'bootstrap';
 import NotesService from './routes';
 
 
