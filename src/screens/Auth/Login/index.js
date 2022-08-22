@@ -1,12 +1,17 @@
 import React, { useState, useContext } from "react";
-import { TextField, Button } from "@mui/material";
-import './index.css'
+import { TextField, Button, Paper } from "@mui/material";
+import '../Login/index.css'
 import { Link, Navigate } from "react-router-dom";
 import axios from 'axios'
 import baseURL from "../../../services/api";
 
+export let token = ""
 
-
+function getToken(){
+    let userId = localStorage.getItem("user")
+    let id = JSON.parse(userId)
+    token=id.token
+}
 
 
 
@@ -37,6 +42,9 @@ function Login(){
             console.log(response.data)
             const jsonResp = JSON.stringify(response.data)
             localStorage.setItem("user", jsonResp)
+
+            getToken()
+           
             
             
             setSucess(true) //auth to navigate to Notes page
@@ -53,42 +61,44 @@ function Login(){
 
     return(
         <div className="body">
-            <h1>Login</h1>
-            <div>
-                <h4>Sign In with your Email and your Password</h4>
-                <form onSubmit={handleSubmit()}>
-                    <div className="name">
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Email"
-                        onChange={e => setEmail(e.target.value)}
-                    />
-
-                    </div>
-                    <div className="name">
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Password"
-                        type="password"
-                        onChange={e => setPassword(e.target.value)}
-                    />
-
-                    </div>
-                    <Button variant="contained" onClick={(event)=> handleSubmit(event)}  color="primary">
-                    Sign In
-                    </Button>
-                    <h5> Do you want to Register?</h5>
-                    <Button variant="contained" component={Link} to='/register' color="warning">
-                    Sign Up
-                    </Button>
-                </form>
-            </div>
-
-            <div className="space-login">
+            <Paper  className="login-table" elevation={6}>
                 
-            </div>
+                <div>
+                    <h4>Sign In with your Email and your Password</h4>
+                    <form onSubmit={handleSubmit()}>
+                        <div className="name">
+                            <TextField
+                                required
+                                id="outlined-required"
+                                label="Email"
+                                onChange={e => setEmail(e.target.value)}
+                            />
+
+                        </div>
+                        <div >
+                            <TextField
+                                required
+                                id="outlined-required"
+                                label="Password"
+                                type="password"
+                                onChange={e => setPassword(e.target.value)}
+                            />
+
+                        </div>
+                        <Button variant="contained" onClick={(event)=> handleSubmit(event)}  color="primary">
+                        Sign In
+                        </Button>
+                        <h5> Do you want to Register?</h5>
+                        <Button variant="contained" component={Link} to='/register' color="warning">
+                        Sign Up
+                        </Button>
+                    </form>
+                </div>
+
+                <div className="space-login">
+                    
+                </div>
+            </Paper>
         </div>
     )
 }

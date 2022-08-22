@@ -109,9 +109,7 @@ const Header = () => {
                     <Typography textAlign="center" component={Link} to='/notesscreen'>Home</Typography>
                   </MenuItem>
 
-                  <MenuItem  onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center" component={Link} to='/newnote'>New Note</Typography>
-                  </MenuItem>
+                  
                 
               </Menu>
             </Box>
@@ -127,14 +125,7 @@ const Header = () => {
                   Home
                 </Button>
 
-                <Button
-                  
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                  component={Link} to='/newnote'
-                >
-                  New Note
-                </Button>
+                
                 
               
             </Box>

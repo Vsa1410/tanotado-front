@@ -1,0 +1,72 @@
+.main-text{
+    margin: 5% 0 20px 5%;
+}
+.notes{
+    
+    
+}
+.drawer{
+    margin: 40px 0 0 0;
+}
+.bm-menu{
+    background-color: rgb(236, 237, 247);
+    padding-top: 20px;
+    margin-top: 35px;
+    margin-left: 13%;
+    padding-left: 0px;
+    margin-right: 0;
+    padding-bottom: 200px;
+    
+    
+}
+.space{
+    height: 100px;
+}
+.search{
+    width: 200px;
+    margin: 0 0 0 100px;
+    padding-left: 10%;
+}
+.notes-editor{
+    margin-left: 0;
+    margin-top: 30px;
+    display: block;
+    margin-left: 30px;
+}
+.notes-list{
+    display:grid;
+    
+    margin:20px 0 0 0;
+    color: rgb(70, 68, 68);
+    cursor: pointer;
+}
+.note-title{
+    color:rgb(3, 3, 80)
+}
+.lateral-top{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: fit-content;
+    
+}
+.list-button{
+    background-color: rgb(236, 237, 247);
+    width: 100%;
+    border-color: transparent;
+    display: grid;
+    cursor: pointer;
+}
+.list-button:hover{
+    background-color: rgb(192, 197, 245);
+}
+.list-itens{
+    background-color: rgb(236, 237, 247);
+    cursor: pointer;
+}
+.list-itens:hover{
+    background-color: rgb(192, 197, 245);
+}
+.new-note-button{
+    height: fit-content;
+}
