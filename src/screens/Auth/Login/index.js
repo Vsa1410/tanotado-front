@@ -35,7 +35,7 @@ function Login(){
     
         axios
         .post(`${baseURL}/users/login`, {
-            email: email,
+            email: email.toLowerCase(),
             password: password
         })
         .then((response)=> {
