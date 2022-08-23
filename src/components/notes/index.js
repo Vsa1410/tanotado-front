@@ -39,20 +39,20 @@ function Notes(props){
      };    
 
     
-    async function fetchNotes(){
-
-        axios
-         .get(URL, config)
-         .then((response)=>{   
-             setNotes(response.data.reverse())      
-             setCurrentNote(response.data[0])                      
-             
-         })
-    }
-    fetchNotes()
     useEffect(()=>{
-        fetchNotes()
-    },[])
+        async function fetchNotes(){
+
+            axios
+            .get(URL, config)
+            .then((response)=>{   
+                setNotes(response.data.reverse())      
+                setCurrentNote(response.data[0])                      
+                
+            })
+        }
+        
+            fetchNotes()
+    },[notes])
 
     const selectNote = (id) => {
         const note =notes.find((note)=> {
@@ -75,7 +75,7 @@ function Notes(props){
     //Delete Method
     async function deleteNote(note){
         axios.delete(`${baseURL}/notes/${note._id}`,config)
-        fetchNotes()
+        
     }
     //Update Note
     
