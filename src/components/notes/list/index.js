@@ -18,10 +18,7 @@ function ListNotes(props) {
          'x-access-token': `${token}`,
        },
      };    
-    async function createNote() {
-          axios.post(URL, {title: "Nova nota", body: "Nova nota..."}, config)
-        
-    }
+   
     
     
         return (
@@ -30,7 +27,7 @@ function ListNotes(props) {
                 <h4>
                     {props.notes.length} Notes
                 </h4>
-                <Button variant="contained" onClick={() => createNote()} className="new-note-button">New Note</Button>
+                <Button variant="contained" onClick={props.createNote} className="new-note-button">New Note</Button>
             </div>
             <List className="notes-list">
                 {props.notes.map((item, key)=>

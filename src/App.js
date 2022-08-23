@@ -22,9 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/register"   element={<Register/>}exact />
           <Route element={<PrivateRoutes/>}>
             
-            <Route path="/register"   element={<Register/>}exact />
             <Route path="/notesscreen"   element={<NotesScreen/>} exact />
           </Route>
         </Routes>

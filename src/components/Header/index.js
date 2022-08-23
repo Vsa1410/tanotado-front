@@ -44,7 +44,8 @@ const Header = () => {
     function logout(){
       localStorage.removeItem('user', null)
       localStorage.removeItem('token', null)
-      return <Navigate to='/' replace={true}/>
+      
+      return <Navigate to='/' replace={true} exact/>
     }
     
 

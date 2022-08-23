@@ -34,6 +34,7 @@ function Register(){
             console.log("Registrado com sucesso")
             setRedirectToLogin(true)
             
+            
         })
         .catch((err)=>{
             console.log(err)

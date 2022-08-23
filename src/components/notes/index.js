@@ -1,4 +1,4 @@
-import { Grid, TextField } from '@mui/material';
+import { Grid, TextField, Button } from '@mui/material';
 import React, {useState, Fragment, useEffect} from 'react'
 import {push as Menu} from 'react-burger-menu';
 import TocIcon from '@mui/icons-material/Toc';
@@ -10,6 +10,7 @@ import ListNotes from './list';
 import dayjs from 'dayjs';
 import Editor from '../../screens/Notes/editor';
 import NotesService from './routes';
+import { set } from 'mongoose';
 
 
 
@@ -38,21 +39,21 @@ function Notes(props){
        },
      };    
 
-    useEffect(()=>{ 
-        async function fetchNotes(){
-            
-            axios
-            .get(URL, config)
-            .then((response)=>{   
-                
-                setNotes(response.data.reverse())      
-                setCurrentNote(response.data[0])                      
-                
-            })
-            
-        }
     
-   
+    async function fetchNotes(){
+        
+        axios
+        .get(URL, config)
+        .then((response)=>{   
+            
+            setNotes(response.data.reverse())      
+            
+            setCurrentNote(response.data[0])                      
+        })
+        
+    }
+    
+    useEffect(()=>{ 
         fetchNotes()
     },[])
 
@@ -61,23 +62,33 @@ function Notes(props){
             return note._id == id;
         })
         setCurrentNote(note)
+        setOpened(false)
     }
     
 
     
     function openButton(){
-        if(opened ===false){
-
+        if(opened === false){
+            fetchNotes()
             return setOpened(true)
+
         }else if(opened === true){
+            
             return setOpened(false)
         }
         
     }
     //Delete Method
     async function deleteNote(note){
-        axios.delete(`${baseURL}/notes/${note._id}`,config)
-        //fetchNotes()
+        // eslint-disable-next-line no-restricted-globals
+        
+        if(window.confirm("Deseja mesmo excluir essa nota?") === true){
+
+            axios.delete(`${baseURL}/notes/${note._id}`,config)
+            fetchNotes()     
+        }
+        
+        
     }
     //Update Note
     
@@ -90,8 +101,57 @@ function Notes(props){
          newNotes[index] = updatedNote.data;
          setNotes(newNotes);
          setCurrentNote(updatedNote.data);
+        fetchNotes()
        } 
-         
+
+       //create a note
+       async function createNote() {
+          axios.post(URL, {title: "Nova nota", body: "Nova nota..."}, config)
+
+            fetchNotes()
+        }
+        if (notes.length < 1) {
+            return(
+                <Fragment>
+                    <Grid container spacing={4} id="notes" className="notes">
+                        <Menu
+                            pageWrapId={"notes-editor"}
+                            isOpen={opened}
+                            noOverlay
+                            disableAutoFocus
+                            outerContainerId={"notes"}
+                            customBurgerIcon={false}
+                            customCrossIcon={false}
+
+                        >
+
+                            <Button variant="contained" onClick={createNote}>Nova Nota</Button>
+
+                        </Menu>
+                    </Grid>
+                    <Grid className="notes-editor" id="notes-editor" container>
+                        <div className='editor-show'>
+
+                            <IconButton 
+                                aria-label="List"
+                                className="open-button"
+                                onClick={openButton}>
+                                
+                                <TocIcon />
+                            </IconButton>
+                            <div>
+
+                                <h2>Nenhuma nota</h2>
+                                <Button variant="contained" onClick={createNote}>Nova Nota</Button>
+                            </div>
+                        </div>
+
+            </Grid>
+        </Fragment>
+            )
+        }else{
+            
+            
 
     return(
         <Fragment>
@@ -111,6 +171,7 @@ function Notes(props){
                         selectNote={selectNote}
                         current_note={current_note} 
                         deleteNote={deleteNote}
+                        createNote={createNote}
                     />
                     <div className='space'>
 
@@ -146,5 +207,5 @@ function Notes(props){
             </Grid>
         </Fragment>
     )
-}
+}} 
 export default Notes
