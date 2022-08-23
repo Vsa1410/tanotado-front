@@ -38,6 +38,7 @@ function Notes(props){
        },
      };    
 
+    fetchNotes()
     useEffect(()=>{
         fetchNotes()
     },[])
