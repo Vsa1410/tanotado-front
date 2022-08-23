@@ -38,10 +38,7 @@ function Notes(props){
        },
      };    
 
-    fetchNotes()
-    useEffect(()=>{
-        fetchNotes()
-    },[])
+    
     async function fetchNotes(){
 
         axios
@@ -52,6 +49,10 @@ function Notes(props){
              
          })
     }
+    fetchNotes()
+    useEffect(()=>{
+        fetchNotes()
+    },[])
 
     const selectNote = (id) => {
         const note =notes.find((note)=> {
