@@ -21,13 +21,13 @@ function App() {
           <Header/>
         <Routes>
           <Route path="/" element={<HomeScreen/>}/>
-          <Route path="/login" element={<Login/>}/>
           <Route path="/register"   element={<Register/>} />
+          <Route path="/login" element={<Login/>}/>
 
           <Route element={<PrivateRoutes/>}>
             <Route path="/notesscreen"   element={<NotesScreen/>} exact />
           </Route>
-          
+
         </Routes>
       </BrowserRouter>
       
