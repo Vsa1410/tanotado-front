@@ -14,6 +14,6 @@ const NotesService = {
     
 
     update:(id, params) => axios.put(`${baseURL}/notes/${id}`, params, {
-    headers:{ "x-access-token" : getToken}})
+    headers:{ "x-access-token" : getToken()}})
 }
 export default NotesService
