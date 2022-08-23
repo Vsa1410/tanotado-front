@@ -28,6 +28,7 @@ function Notes(props){
     let userId = localStorage.getItem("user")
     let id = JSON.parse(userId)
     let token=id.token
+    
         
     
         
@@ -48,7 +49,8 @@ function Notes(props){
             
             setNotes(response.data.reverse())      
             
-            setCurrentNote(response.data[0])                      
+            setCurrentNote(response.data[0])     
+            console.log(id.user.name)                 
         })
         
     }
@@ -141,7 +143,7 @@ function Notes(props){
                             </IconButton>
                             <div>
 
-                                <h2>Olá, {id.name}, Você ainda não tem nenhuma nota</h2>
+                                <h2>Olá, {id.user.name}, Você ainda não tem nenhuma nota</h2>
                                 <Button variant="contained" onClick={createNote}>Nova Nota</Button>
                             </div>
                         </div>
@@ -166,7 +168,7 @@ function Notes(props){
                     customBurgerIcon={false}
                     customCrossIcon={false}
                 >
-                    <h2>Olá, {id.name}</h2>
+                    <h2>Olá, {id.user.name}</h2>
                     <ListNotes
                         notes={notes}
                         selectNote={selectNote}

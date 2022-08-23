@@ -51,13 +51,14 @@
     
 }
 .list-button{
-    background-color: rgb(236, 237, 247);
+    background-color: transparent;
     width: 100%;
     border-color: transparent;
     display: grid;
     cursor: pointer;
     margin:0;
     padding: 0;
+    text-align: left;
 }
 .list-button:hover{
     background-color: rgb(192, 197, 245);

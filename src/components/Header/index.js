@@ -24,6 +24,7 @@ const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [header,setHeader]=useState(true)
+  const [redirectToLogin, setRedirectToLogin] = useState(false)
     
   
     const handleOpenNavMenu = (event) => {
@@ -40,12 +41,15 @@ const Header = () => {
     const handleCloseUserMenu = () => {
       setAnchorElUser(null);
     };
+    if (redirectToLogin === true){
+     return <Navigate to='/' replace={true} />
+    }
     
     function logout(){
       localStorage.removeItem('user', null)
       localStorage.removeItem('token', null)
+      setRedirectToLogin(true)
       
-      return <Navigate to='/' replace={true} exact/>
     }
     
 
