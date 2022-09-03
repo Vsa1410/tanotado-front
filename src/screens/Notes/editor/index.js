@@ -2,13 +2,15 @@ import React, { useEffect, Fragment, useState } from 'react'
 import ReactQuill from 'react-quill'; // ES6
 import 'react-quill/dist/quill.snow.css'; // ES6
 import Notes from '../../../components/notes';
+import '../index.css'
 
 function Editor(props){
     const[currentContent, setCurrentContent] = useState('')
     const [timer, setTimer] = useState(null)
     const updateNote = (content) => {
          const title = content.replace(/(<([^>]+)>)/ig, "").slice(0, 15);
-         props.updateNote(props.note, {'title': title, 'body': content})
+         props.updateNote(props.note, {'title': title, 'body': content, 'updated_at': Date.now()})
+        
        }
 
 
@@ -21,7 +23,7 @@ function Editor(props){
          clearTimeout(timer);
          if(source == 'user'){
            setCurrentContent(content)
-           setTimer(setTimeout(() => updateNote(content), 2000))}}
+           setTimer(setTimeout(() => updateNote(content), 3000))}}
 
     const modules = {
            toolbar: [
@@ -34,9 +36,13 @@ function Editor(props){
            ]
          }
     return(
-        <Fragment>
+        <Fragment >
+            <div className="editor">
+
+                <ReactQuill value={currentContent} onChange={handleChange} modules={modules}/>
+            </div>
+
             
-            <ReactQuill value={currentContent} onChange={handleChange} modules={modules}/>
         </Fragment>
     )
 }

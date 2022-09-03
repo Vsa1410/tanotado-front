@@ -42,7 +42,7 @@ function ListNotes(props) {
                             </Typography>
                             <Typography variant="caption">
 
-                                {dayjs(item.created_at).format('DD/MM/YYYY hh:mm')}
+                                {dayjs(item.updated_at).format('DD/MM/YYYY hh:mm A')}
                             </Typography>
                             
 

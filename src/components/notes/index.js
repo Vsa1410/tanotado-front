@@ -50,7 +50,7 @@ function Notes(props){
             setNotes(response.data.reverse())      
             
             setCurrentNote(response.data[0])     
-            console.log(id.user.name)                 
+                            
         })
         
     }
@@ -103,7 +103,7 @@ function Notes(props){
          newNotes[index] = updatedNote.data;
          setNotes(newNotes);
          setCurrentNote(updatedNote.data);
-        fetchNotes()
+        
        } 
 
        //create a note
