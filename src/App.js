@@ -7,6 +7,7 @@ import NotesScreen from './screens/Notes/index';
 import { Component } from 'react';
 import Header from './components/Header';
 import {useState} from 'react'
+import UserEdit from './screens/users/edit';
 
 import PrivateRoutes from './screens/Auth/privateroute';
 
@@ -26,6 +27,7 @@ function App() {
 
           <Route element={<PrivateRoutes/>}>
             <Route path="/notesscreen"   element={<NotesScreen/>} exact />
+            
           </Route>
 
         </Routes>

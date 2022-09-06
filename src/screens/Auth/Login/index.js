@@ -11,6 +11,7 @@ function getToken(){
     let userId = localStorage.getItem("user")
     let id = JSON.parse(userId)
     token=id.token
+    return (token)
 }
 
 
@@ -28,10 +29,15 @@ function Login(){
     const [redirectToRegister, setRedirectToRegister]=useState(false);
     const [error,setError]= useState(false)
     
-    
+    if(token){
+        console.log("ok")
+        return <Navigate to='/notesscreen' replace={true}/>
+    }
     
     async function handleSubmit(event){
         event.preventDefault()
+
+        
     
         axios
         .post(`${baseURL}/users/login`, {

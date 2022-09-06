@@ -1,33 +1,36 @@
-import React, { Fragment } from "react";
-import { List, FixedSizeList, ListItemButton, ListItemText, Typography,Grid, Button, ListItem } from "@mui/material";
+import React, { Fragment, useState } from "react";
+import { List, Typography,Grid, Button, ListItem, TextField, IconButton } from "@mui/material";
 import dayjs from "dayjs";
 import axios from "axios";
 import baseURL from "../../../services/api";
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
         
 function ListNotes(props) {
+    
     //Get the token from LocalStorage
     let userId = localStorage.getItem("user")
     let id = JSON.parse(userId)
     let token=id.token
 
-    const URL = `${baseURL}/notes/`;
+   
     const config = {
        headers: {
          'x-access-token': `${token}`,
        },
      };    
-   
+     
     
     
         return (
         <Fragment>
+           
             <div className="lateral-top">
                 <h4>
                     {props.notes.length} Notes
                 </h4>
-                <Button variant="contained" onClick={props.createNote} className="new-note-button">New Note</Button>
+                <Button variant="contained" onClick={props.createNote} className="new-note-button">Nova Nota</Button>
             </div>
             <List className="notes-list">
                 {props.notes.map((item, key)=>

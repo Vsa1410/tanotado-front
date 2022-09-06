@@ -161,8 +161,8 @@ const Header = () => {
                 onClose={handleCloseUserMenu}
               >
                
-                  <MenuItem key={"Profile"} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{"Profile"}</Typography>
+                  <MenuItem key={"Profile"} onClick={handleCloseUserMenu} component={Link} to='/editUser'>
+                    <Typography textAlign="center">{"Perfil"}</Typography>
                   </MenuItem>
                   <MenuItem key={"Logout"} >
                     <Typography textAlign="center" onClick={logout}>{"Logout"}</Typography>
